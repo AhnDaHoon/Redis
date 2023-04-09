@@ -16,7 +16,7 @@ public class TestController {
 
     // setFruit?name=banana
 
-    @GetMapping("/getFruit")
+    @GetMapping("/setFruit")
     public String setFruit(@RequestParam String name){
         ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
         ops.set("fruit", name);
