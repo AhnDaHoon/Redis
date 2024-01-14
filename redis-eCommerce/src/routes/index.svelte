@@ -8,7 +8,7 @@
 	export let highestPrice: Item[] = [];
 </script>
 
-<h1 class="text-3xl">가장 비싼 아이템</h1>
+<h1 class="text-3xl">Most Expensive</h1>
 <Carousel>
 	{#each highestPrice as item}
 		<div class="flex-1">
@@ -19,7 +19,7 @@
 
 <hr class="my-8" />
 
-<h1 class="text-3xl">곧 마감되는 아이템</h1>
+<h1 class="text-3xl">Ending Soonest</h1>
 <Carousel>
 	{#each endingSoonest as item}
 		<div class="flex-1">
@@ -30,7 +30,7 @@
 
 <hr class="my-8" />
 
-<h1 class="text-3xl">인기 아이템</h1>
+<h1 class="text-3xl">Most Views</h1>
 <Carousel>
 	{#each mostViews as item}
 		<div class="flex-1">
