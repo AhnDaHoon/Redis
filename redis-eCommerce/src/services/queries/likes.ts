@@ -1,5 +1,5 @@
-import { userLikesKey, itemsKey } from '$services/keys';
 import { client } from '$services/redis';
+import { userLikesKey, itemsKey } from '$services/keys';
 import { getItems } from './items';
 
 export const userLikesItem = async (itemId: string, userId: string) => {
@@ -7,8 +7,10 @@ export const userLikesItem = async (itemId: string, userId: string) => {
 };
 
 export const likedItems = async (userId: string) => {
+	// Fetch all the item ID's from this user's liked set
 	const ids = await client.sMembers(userLikesKey(userId));
 
+	// Fetch all the item hashes with those ids and return as array
 	return getItems(ids);
 };
 
@@ -30,7 +32,6 @@ export const unlikeItem = async (itemId: string, userId: string) => {
 
 export const commonLikedItems = async (userOneId: string, userTwoId: string) => {
 	const ids = await client.sInter([userLikesKey(userOneId), userLikesKey(userTwoId)]);
-	console.log(ids);
 
 	return getItems(ids);
 };
